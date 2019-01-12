@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/aviastyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}" type="text/css">
+</head>
+<body style="background-color: #007bff; color:white">
+<button style=" background-color: #80bdff; border-radius: 6px; border-color: #9fcdff"><a href="{% url 'aviacompany_list' %}" style="font-size:20px; color: white">Вернуться на главную страницу</a></button>
+
+<div class='container'>
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <div style="font-size:33px; font-family: franklin gothic medium;">Самолеты компании "{{ aviacompany.company_name }}":</div>
+        </div>
+    </div>
+</div>
+
+{% for plain in plains %}
+    <div style="height: 70px"></div>
+    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <div align="center" style="border: solid; border-radius: 7px; border-color:white; width:440px; font-size: 20px"><a  href="{% url 'plain' plain.id_plain %}" style="color: white; margin-left: 3px">"{{ plain.plain_name }}"</a></div>
+
+    </div>
+    </div>
+    </div>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'styles/aviastyle.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aviamania</title>
+</head>
+<body style="background-color: #007bff; color:white">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2" style="border-color: deepskyblue;">
+            <div style=" width:230px; background-color:white; border-radius:6px; color:red;"><div style="margin-left: 7px;">Неверный пароль или логин, попробуйте еще раз.</div></div>
+            <form id="auth" method="POST" action="admin_panel">
+    {% csrf_token %}
+    <input type="text" name="login" class="form-control" placeholder="Логин:" style="width:230px; background-color: #9fcdff; border-color: white">
+    <input type="password" name="password" class="form-control" placeholder="Пароль:" style="width:230px; background-color: #9fcdff">
+    <input type="submit" value="Вxод" style="width:230px; color:white; border-radius: 6px; border-color: white; background-color: deepskyblue; alignment: center; border-width: thin">
+</form>
+        </div>
+        <div class="col-2"></div>
+    <div class="col-md-auto" id="name">AviaMania</div>
+</div>
+</div>
+<div style="height: 100px"></div>
+<div class="container-fluid">
+    <form id="search" action="get_aviacompany" method="POST">
+        <div class="row">
+    {% csrf_token %}
+            <div class="col-2"></div>
+            <div class="col-7">
+    <input type="text" name="search_by_name" class="form-control" placeholder="Поиск авиакомпании..." style="width: 100%">
+            </div>
+            <div class="col-1">
+    <input type="submit" value="Искать" style="width: 100px; height: 100%; color:white; border-radius: 6px; border-color: white; background-color: deepskyblue; alignment: center; border-width: thin">
+            </div>
+        </div>
+</form>
+</div>
+
+{% for aviacompany in aviacompanies %}
+    <div style="height: 40px"></div>
+    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-3"></div>
+        <div class="col">
+            <div id="c_name" align="center" style="font-size: 20px">Авиакомпания "{{ aviacompany.company_name }}"</div>
+            <div id="info">
+                <div style="height:30px; font-size:17px; margin-left:12px; color: #007bff">Страна: {{ aviacompany.country }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Директор: {{ aviacompany.director }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Дата основания: {{ aviacompany.date }}</div>
+                <div style="background-color: #80bdff; height:27px;font-size:17px; margin-left:12px; width: 45px; border-radius: 7px;"><a  href="{% url 'fleet' aviacompany.id %}" style="color: white; margin-left: 3px">Флот</a></div>
+                <div style="font-size:17px; margin-left:12px; color: #007bff">Краткое описание: <div style="border: solid; border-color: #80bdff; border-radius: 7px; width: 416px; padding-left: 5px">{{ aviacompany.description }}</div></div>
+                <div style="height: 7px"></div>
+            </div>
+    </div>
+    </div>
+    </div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin page</title>
+    {% load staticfiles %}
+        <link rel="stylesheet" href="{% static 'styles/aviastyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}" type="text/css">
+</head>
+<body>
+<p></p>
+<button style=" background-color: #80bdff; border-radius: 6px; border-color: #9fcdff"><a href="{% url 'aviacompany_list' %}" style="font-size:20px; color: white">Вернуться на главную страницу</a></button>
+<p></p>
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+    <div style="font-size: 40px" class="col-md-auto">Панель администратора</div>
+</div>
+</div>
+<div style="height: 26px;"></div>
+<div>
+    <div align="center"><a href="{% url 'add_aviacompany_page' %}" style="font-size:30px;">Добавить авиакомпанию</a></div>
+    <p></p>
+    <div align="center"><a href='{% url 'add_plain_page' %}' class="btn-link" style="font-size:30px;">Добавить самолеты</a></div>
+    <p></p>
+    <div align="center"><a href='{% url 'delete_company_page' %}' class="btn-link" style="font-size:30px;">Удалить авиакомпанию</a></div>
+    <p></p>
+    <div align="center"><a href='{% url 'delete_plain_page' %}' class="btn-link" style="font-size:30px;">Удалить самолеты</a></div>
+
+
+</div>
+</body>
+</html>

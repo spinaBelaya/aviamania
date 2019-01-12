@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'styles/aviastyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/bootstrap.min.css' %}" type="text/css">
+</head>
+<body style="background-color: #007bff; color:white">
+<button style=" background-color: #80bdff; border-radius: 6px; border-color: #9fcdff"><a href="{% url 'aviacompany_list' %}" style="font-size:20px; color: white">Вернуться на главную страницу</a></button>
+
+<div class='container'>
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+        </div>
+    </div>
+</div>
+
+<div style="height: 70px"></div>
+    <div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            <div id="c_name" align="center" style="font-size: 20px">"{{ plain.plain_name }}"</div>
+            <div id="info">
+                <div style="height:30px; font-size:17px; margin-left:12px; color: #007bff">Длина: {{ plain.length }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Кол-во мест: {{ plain.numof_seats }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Размах крыльев: {{ plain.wingspan }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Макс. высота полета: {{ plain.max_height }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Грузоподъемность: {{ plain.max_weight }}</div>
+                <div style="height:30px;font-size:17px; margin-left:12px; color: #007bff">Средняя скорость: {{ plain.speed }}</div>
+                <div style="height: 7px"></div>
+            </div>
+    </div>
+    </div>
+    </div>
+
+
+</body>
+</html>
